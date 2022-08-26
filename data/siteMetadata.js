@@ -1,8 +1,8 @@
 const siteMetadata = {
   title: 'Dev Blog',
   author: 'Wade',
-  headerTitle: 'Wades Work',
-  description: 'A developer blog',
+  headerTitle: 'Wades.Work',
+  description: 'Software & Web Development',
   language: 'en-us',
   theme: 'dark', // system, dark or light
   siteUrl: 'https://wades.work',
