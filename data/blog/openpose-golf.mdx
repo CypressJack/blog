@@ -1,0 +1,59 @@
+---
+title: Openpose & OpenCV for Golf Swing Analysis
+date: '2022-08-27'
+tags: ['OpenCV', 'OpenPose', 'CUDA', 'C++']
+draft: false
+summary: 'Applying computer vision, machine learning, and GPU acceleration to golf'
+---
+
+import VideoPlayer from '@/components/VideoPlayer'
+
+## Golf is hard
+
+In pursuit of trying to nail down a better golf swing, I seeked out a library that could allow me to map out exactly what is going on in my golf swing. I figure if I can take slow motion video footage, and analyze the various body positions, some coaching points could be gleaned from the data.
+
+<VideoPlayer url="/static/video/tiger.mp4" caption="Tiger Woods' swing analyzed with OpenPose" />
+
+## My Approach
+
+I haven't figured out yet exactly what I'd like to do with the data collected from this application, other than visual feedback like the video sample above. I'd like to improve the accuracy of points found in this particular application, then work out the best way to analyze the data.
+
+## Application
+
+### Ideally I'd apply OpenPose as follows:
+
+- Analyze a dataset of good golf swings
+- Create a dataset of the estimated body points
+- Model the data to find similarities in what makes a good swing
+- Run this model against my own video footage to find the similarities and differences between the two
+- Use this data as coaching points in improving golf swing technique
+
+## OpenPose
+
+OpenPose is an open-source library used for multi-person keypoint detection and body, face, hands, and foot estimation. It allows for real-time analysis of a live or recorded video feed. The primary API used is available in Python and C++, with demos available in both languages. This library, along with most other machine learning implementations, benefits greatly in speed and accuracy from GPU acceleration/parallel computing.
+
+## OpenCV
+
+OpenCV is an open-source computer vision and machine learning library. It provides an API and set of algorithms useful in computer vision applications like recognizing faces, identifying objects, object tracking, etc. It's widely used and well documented, and exposes it's API's in C++, Python, and Java. I'm looking to learn more on crafting your own applications with it, because the possible uses are endless.
+
+## CUDA
+
+CUDA is an industry standard implementation of GPU acceleration for machine learning and data science tasks, built by Nvidia. It allows parallel computing tasks to interface and run on both consumer and professional Nvidia GPUs. In the case of OpenPose it brings the compute time of estimating pose data down from hours and days on a CPU, to seconds or minutes while running on a GPU.
+
+## Compiling
+
+If your goal is to run OpenPose standalone to analyze video, and aren't looking to extend or modify the functionality, the demo provided is an excellent starting point.
+
+I opted to compile the C++ executable of the demo application to benefit from the speed gains over Python. I chose to do this because although upfront getting it running in Python would likely be quicker than compiling C++, the C++ executable runs significantly faster at runtime as one would expect.
+
+## Dependencies
+
+Openpose uses the typical dependencies one would expect in a project of this type:
+
+- PyTorch
+- CUDA
+- cuDNN (CUDA Extension)
+- OpenCV
+- Caffe
+- CMake for compilation
+- Required pre-trained models (there are a few options, BODY_25 being the best)
