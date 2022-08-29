@@ -1,0 +1,99 @@
+---
+title: How to run MacOS on PC
+date: '2022-08-30'
+tags: ['MacOS', 'KVM', 'QEMU', 'Virtualization']
+draft: false
+summary: 'Run a virtual MacOS environment that matches or outperforms first party hardware.'
+---
+
+![MacOS Monterray](/static/images/monterray.jpg)
+
+## Introduction
+
+This is a dense topic, involving many different aspects to achieve a performant install of MacOS on non Mac hardware. For this reason I plan on breaking the topic out into multiple articles so that I can cover everything in depth.
+
+## The Challenge
+
+With the need to run Adobe Creative Cloud applications (and learn Swift/iOS development), and avoiding Windows if I can help it, I set off to run a full fat install of MacOS on my PC hardware. The host OS I'm currently using is Linux Mint 20.04.
+
+## My hardware
+
+- Ryzen 3800X CPU (8-core 16-thread)
+- 16GB 3200MHz DDR4 RAM (2x 8GB Sticks)
+- 256GB M.2 PCIe SSD
+- 2x 500GB SATA SSDs
+- Nvidia RTX 3070 8GB GPU (host)
+- Nvidia Quadro K4200 4GB GPU (VM)
+- Asus B350f Motherboard
+
+## Tech Summary
+
+#### KVM
+
+Kernel Virtual Machine
+
+#### QEMU
+
+Linux virtualization framework
+
+#### Libvirt
+
+Library that simplifies QEMU VM config & management via XML manifest files
+
+#### Virt-Manager
+
+Front end GUI for Libvirt XML creation
+
+#### OVMF
+
+Enables UEFI support on virtual machines
+
+#### VFIO (IOMMU)
+
+Allows separating PCIe lanes on a per device level, used to connect PCIe devices directly to the VM with zero host overhead.
+
+#### AMD VI/Intel VT-d
+
+AMD & Intel's virtualization implementations that enable VFIO functionality
+
+#### OpenCore
+
+The boot loader used to load everything MacOS requires to function & run on our hardware.
+
+## Why not Hackintosh
+
+Many people have put together 'Hackintoshes' and run MacOS on bare-metal (bare-metal meaning running natively, without the virtualization layer). There is quite a rich community of these people out there. Because I'm using an AMD Ryzen 3800X CPU rather than an Intel chip, running bare-metal MacOS can still be achieved, but at the cost of missing certain instruction sets. These intel specific instructions are used by Adobe for their Creative Cloud applications, so that was a deal breaker for creating a bare-metal install in my case. We can instead emulate an Intel CPU and our MacOS install won't know the difference.
+
+## Going Forward
+
+Now that I've achieved fully functioning MacOS VM, I'd like to do a deep dive on the difference pieces of the puzzle that have come together to make this project possible.
+
+## Useful Links & References
+
+#### OpenCore
+
+[Install Guide/Wiki](https://dortania.github.io/OpenCore-Install-Guide/)
+[GitHub Repo](https://github.com/acidanthera/OpenCorePkg)
+[GPU Buyers Guide](https://dortania.github.io/GPU-Buyers-Guide/)
+
+#### QEMU
+
+[Website](https://www.qemu.org/)
+
+#### KVM
+
+[Website](https://www.linux-kvm.org/page/Main_Page)
+
+#### Libvirt
+
+[Website](https://libvirt.org/)
+
+#### Virt-Manager
+
+[Website](https://virt-manager.org/)
+
+#### Arch Wiki
+
+[Wiki](https://wiki.archlinux.org/)
+
+One of the most useful resources for all Linux kernel information.
