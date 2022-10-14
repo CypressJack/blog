@@ -1,0 +1,21 @@
+---
+title: Why WebAssembly is Here to Stay
+date: '2022-10-13'
+tags: ['webassembly', 'browser']
+draft: false
+summary: 'What differentiates a native application from a browser-based application? The list of differences is definetly shrinking'
+---
+
+# Why Not Just Run It in the Browser?
+As time progresses, the browser becomes more and more it's own operating system. Previously, access to hardware components, computing power, graphics acceleration, was limited to apps running natively. A native runtime was required to do anything meaningful on your computer, phone or tablet. Browsers have been playing catch up for a long time, but now have the ability to run applications that mirror the features of their natively run counterparts. Many technologies have evolved and are now available to developers to create these meaningful web experiences, and many users now prefer using them over the other options. Whether it's the exodus from Outlook to Gmail, Microsoft Office to Google Docs, Adobe XD to Figma, browser applications have taken over. But what has made this possible?
+
+# It Comes Down to Compilation
+The main difference between performant native applications and previous attempts at web applications is compilation. Javascript code running in the browser is interpreted, meaning line by line, the human readable file is converted to machine code and executed. On the other hand compiled code, used in running native applications, has been converted to machine readable code ahead of time. This results in highly optimized, performant applications, because the computer doesn't have to exhert any effort to convert the human readable code to something it can use - in real time. Additionally these compiled languages provide a higher level of control over resources, such as memory management, to squeeze out every last bit of performance.
+
+The good news is that thanks to WebAssembly, or WASM for short, we can now run these compiled languages inside the browser.
+
+# You Need a Target
+When compiling, a target must be established to compile to. This is usually the architecture of the CPU you're looking to compile to, and the operating system you plan to run the application on. Compilers allow one to compile to Mac Os, Windows, Linux, and create an executable that will work with each operating system. In addition to the operating systems named above, WebAssembly can be the compilation target and the subsequent executable created will run inside the web browser.
+
+# Going Forward
+As time goes on Web Assembly is going to enable developers to write applications that can effeciently use resources, and as a result, offer meanigful experiences from inside the browser. With the creation and adoption of this technology, down the road it's possible that you won't need an 'App Store'. Every app you need will be available via the browser, with the ability to install it to your home screen for easy access. Apps will be able to run locally on your hardware, with the browser as the underlying operating system supporting it. It's an exciting technology, where the oppurtunities are endless. The amount of energy saved by compiling multi-platform applications to only one target, is absurd. It has the ability to become the universal platform accross all devices, and for that reason, I think Web Assembly is here to stay.
