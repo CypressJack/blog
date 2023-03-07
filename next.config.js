@@ -58,6 +58,22 @@ module.exports = withBundleAnalyzer({
   eslint: {
     dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
   },
+  rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/',
+          has: [
+            {
+              type: 'host',
+              value: 'blog.wades.work',
+            },
+          ],
+          destination: '/blog',
+        },
+      ],
+    }
+  },
   async headers() {
     return [
       {
